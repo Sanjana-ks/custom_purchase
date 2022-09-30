@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <report
+            id="custom_purchase_order"
+            string="Custom Purchase Order"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            file="custom_purchase.report_purchase_order"
+            name="custom_purchase.report_purchase_order"/>
+
+    <template id="report_purchase_order">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <br></br>
+                        <br></br>
+                        <tr>
+                            <td>
+                                <div align="top-left" style="font-size:20pt;margin:auto">
+                                    <t t-esc="o.partner_id.parent_id.name" default=" "/>
+                                    <t t-esc="o.partner_id.name"/>
+                                    <span style="font-size:15pt;margin-left:40%">
+                                    Order Date : <t t-esc="o.date_order"/>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
