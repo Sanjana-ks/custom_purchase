@@ -6,12 +6,12 @@ from odoo import api, fields, models
 class CustomVendorBillLine(models.Model):
     _inherit = 'account.move'
 
-    custom_vendor_bill_line = fields.One2many('vendor.bill.details', 'vendor_bill_id', string='Custom Invoice Lines')
+    custom_vendor_bill_line = fields.One2many('vendor.bill.line', 'vendor_bill_id', string='Custom Invoice Lines')
 
 
-class VendorBillDetails(models.Model):
-    _name = 'vendor.bill.details'
-    _description = 'Vendor Bill Details'
+class VendorBillLine(models.Model):
+    _name = 'vendor.bill.line'
+    _description = 'Vendor Bill Line'
 
     def _calculate_subtotal(self):
         for val in self:

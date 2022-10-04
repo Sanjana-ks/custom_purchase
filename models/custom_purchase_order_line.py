@@ -8,6 +8,20 @@ class CustomPurchaseOrderLine(models.Model):
 
     custom_product_line = fields.One2many('custom.product.details', 'custom_product_id', string='Product')
 
+    def send_bill(self):
+        self.name
+        # print(ref_id)
+        if self.name:
+            res = self.env['account.move'].search([('invoice_origin', '=ilike', self.name)])
+            print(res)
+            lst = []
+            res.custom_vendor_bill_line.unlink()
+            for rec in self.custom_product_line:
+                lst.append((0, 0, {'product_id': rec.product_id.id, 'quantity': rec.quantity,
+                                   'price': rec.unit_price, 'subtotal': rec.subtotal}))
+            print("list", lst)
+            res['custom_vendor_bill_line'] = lst
+
 
 class CustomProductDetails(models.Model):
     _name = 'custom.product.details'

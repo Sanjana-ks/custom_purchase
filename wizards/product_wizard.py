@@ -19,7 +19,7 @@ class ProductWizard(models.TransientModel):
             for rec in purchase_id.order_line:
                 lst.append(
                     (0, 0, {'product_id': rec.product_id.id, 'quantity': rec.product_qty,
-                            'unit_price': rec.price_unit, 'subtotal':rec.price_subtotal}))
+                            'unit_price': rec.price_unit, 'subtotal': rec.price_subtotal}))
             res['product_line'] = lst
         return res
 
