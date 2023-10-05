@@ -5,15 +5,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync:
-    name: 'Submodules Sync'
+  update:
     runs-on: ubuntu-latest
-
-    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-    defaults:
-      run:
-        shell: bash
-
+    
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
@@ -22,10 +16,12 @@ jobs:
     # Update references
     - name: Git Sumbodule Update
       run: |
-        git submodule update --remote
+        git submodule update --init --recursive
+        git submodule update --recursive --remote
     - name: Commit update
       run: |
         git config --global user.name 'Sanjana-ks'
         git config --global user.email 'sanjana.gharewal@ksolves.com'
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git commit -am "Auto updated submodule references" && git push || echo "No changes to commit"
+        git commit -am "Auto updated submodule references" 
+        git push || echo "No changes to commit"
