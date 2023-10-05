@@ -1,0 +1,23 @@
+name: Update Submodule
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update_submodule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update Submodule
+        run: |
+          git submodule update --remote --recursive
+          git add odoo_custom_projects
+          git commit -m "Update main repository submodule"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.Sanjana_ks@gitSubmodules }}
