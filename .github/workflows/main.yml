@@ -17,6 +17,8 @@ jobs:
         run: |
           git submodule update --remote --recursive
           git add odoo_custom_projects
+          git config --global user.name 'Sanjana-ks'
+          git config --global user.email 'sanjana.gharewal@ksolves.com'
           git commit -m "Update main repository submodule"
           git push
         env:
