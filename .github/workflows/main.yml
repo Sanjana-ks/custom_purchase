@@ -20,4 +20,4 @@ jobs:
           git commit -m "Update main repository submodule"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.Sanjana_ks@gitSubmodules }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
