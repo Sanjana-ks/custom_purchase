@@ -1,0 +1,3 @@
+[submodule "odoo_custom_projects"]
+	path = odoo_custom_projects
+	url = https://github.com/Sanjana-ks/odoo_custom_projects
