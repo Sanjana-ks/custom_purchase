@@ -11,7 +11,7 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
 
     # Update references
     - name: Git Sumbodule Update
